@@ -18,8 +18,8 @@ class CreateGaragesTable extends Migration
             $table->string('garage_name');
             $table->integer('total_spaces')->unsigned();
             $table->integer('occupied_spaces')->unsigned();
-            $table->string('entrance');
-            $table->string('exit');
+            $table->string('entrance')->nullable();
+            $table->string('exit')->nullable();
             $table->timestamps();
         });
     }

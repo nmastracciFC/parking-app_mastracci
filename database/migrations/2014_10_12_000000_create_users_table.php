@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('lname');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('license_plate');
+            $table->string('license_plate')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
