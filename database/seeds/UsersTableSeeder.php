@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'lname' => $faker->lastName,
             'email' => $faker->email,
             'password' => Hash::make('password'),
-            'license_plate' => $faker->license_plate()
+            'license_plate' => 'BDLS'.$index.'00'
    
        	]);
        }

@@ -9,6 +9,6 @@ use App\Http\Resources\Garage as GarageResource;
 class GarageController extends Controller
 {
     public function show($id){
-    	return new GarageResource(Product::find($id));
+    	return new GarageResource(Garage::find($id));
     }
 }

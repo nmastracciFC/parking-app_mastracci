@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Garage;
 
 class GaragesTableSeeder extends Seeder
 {
@@ -13,15 +14,15 @@ class GaragesTableSeeder extends Seeder
     {
        Eloquent::unguard();
 
-       $faker = Faker\Factory::create();
+       // $faker = Faker\Factory::create();
 
        foreach(range(1,3) as $index) {
        	Garage::create([
-            'garage_name' => $faker->garage_name,
+            'garage_name' => 'Garage'.$index,
             'total_spaces' => 100,
             'occupied_spaces' => 0,
-            'entrance' => $this->entrance,
-            'exit' => $this->exit,
+            'entrance' => null,
+            'exit' => null
        	]);
        }
     }
