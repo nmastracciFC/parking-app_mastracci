@@ -15,7 +15,7 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                font-family: "acumin-pro-extra-condensed",sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -68,7 +68,7 @@
         <div class="flex-center position-ref full-height">
         
             <div class="content">
-                <img src="images/logo_spot.svg" alt="SPOT Parking Logo">
+                <img src="images/logo_spot-circle.svg" alt="SPOT Parking Logo">
 
                 <div class="links">
                     <br><br>
