@@ -8,7 +8,13 @@ use App\Http\Resources\Garage as GarageResource;
 
 class GarageController extends Controller
 {
-    public function show($id){
-    	return new GarageResource(Garage::find($id));
+	 public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+    public function show(){
+    	return new GarageResource(Garage::all());
+    	// return new GarageResource(Garage::find($id));
     }
 }
