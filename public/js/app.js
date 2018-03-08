@@ -49845,7 +49845,7 @@ var render = function() {
     [
       _c("h1", [_vm._v("I am the Garages Component")]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "/garages/{id}" } })
+      _c("router-link", { attrs: { to: "/about" } })
     ],
     1
   )

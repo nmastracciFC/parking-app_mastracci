@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1>I am the Garages Component</h1>
-        <router-link to="/garages/{id}"></router-link>
+        <router-link to="/about"></router-link>
     </div>
 </template>
 
