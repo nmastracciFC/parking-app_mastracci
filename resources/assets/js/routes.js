@@ -1,13 +1,13 @@
 import VueRouter from 'vue-router';
 
-const routes = [
+let routes = [
 	{
 		path:'/home',
-		component:require('./components/ExampleComponent')
+		component:require('./components/ExampleComponent.vue')
 	},
 	{
 		path:'/about',
-		component:require('./components/About')
+		component:require('./components/About.vue')
 	}
 	
 ];

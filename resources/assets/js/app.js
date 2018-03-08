@@ -1,4 +1,9 @@
-import router from './routes.js';
+var Vue = require('vue');
+var VueRouter = require('vue-router');
+
+var router = require('./routes.js');
+
+// import router from './routes.js';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -21,5 +26,5 @@ Vue.component('about', require('./components/About.vue'));
 
 const app = new Vue({
     el: '#app',
-    router
+    router: router
 });
