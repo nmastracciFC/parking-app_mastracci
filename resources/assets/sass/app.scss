@@ -1,6 +1,7 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://use.typekit.net/gwd1wpl.css");
 
 // Variables
 @import "variables";
@@ -11,4 +12,41 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+@import url("https://use.typekit.net/gwd1wpl.css");
+
+body {
+	padding:3em;
+}
+.logo {
+	width: 5em;
+	display:inline-block;
+}
+nav {
+	display: inline-block;
+	// vertical-align:center;
+	// margin-left:1em;
+	// text-decoration:none;
+	// color:$grey;
+	
+	ul{
+		list-style:none;
+		
+
+	}
+	li {
+		
+		display: inline-block;
+		margin-right: 1em;
+
+	}
+	a {
+		color:$grey;
+		font-size:1.6em;
+
+		
+		}
+		
+
+	
 }
