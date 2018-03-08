@@ -17,6 +17,19 @@
     <body>
        
         <div id="app">
+            <div class="content">
+                <img class="logo" src="images/logo_spot-circle.svg" alt="SPOT Parking Logo">
+
+                <nav class="login-main">
+                    <ul>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    </ul>
+                    
+                    
+                    
+                </nav>
+            </div>
 
             <router-link to="/" exact>HOME</router-link>
             <router-link to="/about">ABOUT</router-link>

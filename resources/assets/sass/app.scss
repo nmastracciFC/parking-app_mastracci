@@ -18,3 +18,35 @@
 body {
 	padding:3em;
 }
+.logo {
+	width: 5em;
+	display:inline-block;
+}
+nav {
+	display: inline-block;
+	// vertical-align:center;
+	// margin-left:1em;
+	// text-decoration:none;
+	// color:$grey;
+	
+	ul{
+		list-style:none;
+		
+
+	}
+	li {
+		
+		display: inline-block;
+		margin-right: 1em;
+
+	}
+	a {
+		color:$grey;
+		font-size:1.6em;
+
+		
+		}
+		
+
+	
+}

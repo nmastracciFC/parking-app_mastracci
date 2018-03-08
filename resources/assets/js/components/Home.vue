@@ -1,7 +1,8 @@
 <template>
     <div class="container">
        
-    <h1>I'm an example component.</h1>
+    <h1>Welcome to Spot</h1>
+    
                 
     </div>
 </template>

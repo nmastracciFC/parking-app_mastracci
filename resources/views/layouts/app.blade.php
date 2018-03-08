@@ -65,6 +65,10 @@
         </nav>
 
         <main class="py-4">
+            <router-link to="/" exact>HOME</router-link>
+            <router-link to="/about">ABOUT</router-link>
+            <router-link to="/garages">GARAGES</router-link>
+            <router-view></router-view>
             @yield('content')
         </main>
     </div>

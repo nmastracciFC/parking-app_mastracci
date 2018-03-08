@@ -10004,3 +10004,26 @@ body {
   padding: 3em;
 }
 
+.logo {
+  width: 5em;
+  display: inline-block;
+}
+
+nav {
+  display: inline-block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+nav a {
+  color: #a9aab4;
+  font-size: 1.6em;
+}
+
