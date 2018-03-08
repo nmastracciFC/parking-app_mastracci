@@ -20,8 +20,9 @@
 
             <router-link to="/" exact>HOME</router-link>
             <router-link to="/about">ABOUT</router-link>
+            <router-link to="/garages">GARAGES</router-link>
             <router-view></router-view>
-            <about></about>
+            
                     
                 
         </div>

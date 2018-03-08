@@ -1,8 +1,7 @@
 <template>
     <div class="container">
-       
-    <h1>I'm an example component.</h1>
-                
+        <h1>I am the Garages Component</h1>
+        <router-link to="/garages/{id}"></router-link>
     </div>
 </template>
 

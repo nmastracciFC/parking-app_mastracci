@@ -1,17 +1,9 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm the About component.
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+    <h1>I'm the About component.</h1>
     </div>
+                 
 </template>
 
 <script>

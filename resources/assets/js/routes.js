@@ -8,6 +8,10 @@ let routes = [
 {
 	path:'/about',
 	component:require('./components/About')
+},
+{
+	path:'/garages',
+	component:require('./components/Garages')
 }
 
 

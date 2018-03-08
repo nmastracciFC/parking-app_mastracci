@@ -47059,14 +47059,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -47090,21 +47082,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
+      _c("h1", [_vm._v("I'm an example component.")])
     ])
   }
 ]
@@ -47179,14 +47157,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -47210,21 +47180,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm the About component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
+      _c("h1", [_vm._v("I'm the About component.")])
     ])
   }
 ]
@@ -47261,6 +47217,9 @@ var routes = [{
 }, {
 	path: '/about',
 	component: __webpack_require__(43)
+}, {
+	path: '/garages',
+	component: __webpack_require__(53)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -49897,6 +49856,103 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(12)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Garages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62d79b7c", Component.options)
+  } else {
+    hotAPI.reload("data-v-62d79b7c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h1", [_vm._v("I am the Garages Component")]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/garages/{id}" } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62d79b7c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
