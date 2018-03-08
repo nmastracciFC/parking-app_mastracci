@@ -12,7 +12,6 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
         <style>
             html, body {
                 background-color: #fff;
@@ -67,20 +66,28 @@
         </style>
     </head>
     <body>
-        <script>
-            var baseURL = "{{ URL('/')}}/";
-            var token = "{{ csrf_token() }}";
-        </script>
-        <div id="app">
-
-            <router-link to="/" exact>HOME</router-link>
-            <router-link to="/about">ABOUT</router-link>
-            <router-view></router-view>
-            <about></about>
-                    
-                
-        </div>
+        <div class="flex-center position-ref full-height">
         
-        <script src="/js/app.js"></script>
+            <div class="content">
+                <img src="images/logo_spot-circle.svg" alt="SPOT Parking Logo">
+
+                <div class="links">
+                    <br><br>
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Register</a>
+
+                    <router-link  to="/" >HOME</router-link>
+                    <router-link  to="/about" >ABOUT</router-link>
+                    <router-view></router-view>
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+    window.Laravel =  <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+</script>
+        <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>

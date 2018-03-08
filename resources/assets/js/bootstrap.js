@@ -1,4 +1,6 @@
-
+import Vue from 'vue';
+import VueRouter from 'vue-router'
+import axios from 'axios';
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
@@ -20,9 +22,13 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+// window.Vue = Vue;
+window.Vue = require('vue');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+Vue.use(VueRouter);
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

@@ -1,4 +1,4 @@
-
+import router from './routes.js';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./router');
 
 window.Vue = require('vue');
 
@@ -16,7 +17,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('about', require('./components/About.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });
