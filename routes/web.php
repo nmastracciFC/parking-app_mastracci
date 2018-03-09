@@ -24,5 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/garages','ParkingController@index');
 Route::post('/garages/park','ParkingController@store');
 Route::get('/garages/park/{id}', 'ParkingController@show');
-Route::get('/garages/park/paid', 'ParkingController@update');
+Route::get('/garages/park/{id}/paid', 'ParkingController@update');
 

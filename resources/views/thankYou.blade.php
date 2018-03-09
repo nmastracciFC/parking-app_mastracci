@@ -8,8 +8,8 @@
             <div class="alert alert-success">{{ session('status') }}</div>
         @endif
         <h4>Thanks for your business, {{ Auth::user()->fname }}</h4>
-        <h4>{{$paymentMessage}}</a></h4>
-        <a href="/garages/park/{{$ticketId}}/paid">PAY NOW AND EXIT</a>
+        <h4>See You next time!</a></h4>
+        <a href="/home">Go To Homepage</a>
 
         
         </div>

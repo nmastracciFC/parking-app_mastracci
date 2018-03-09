@@ -101,16 +101,16 @@ class ParkingController extends Controller
 
         if($ticketDuration <= $oneHour->duration){
             $paymentMessage = "you owe $".$oneHour->price/100;
-            return view('payment', compact('paymentMessage'));
+            return view('payment', compact('paymentMessage', 'ticketId'));
         }else if($ticketDuration <= $threeHours->duration){
             $paymentMessage = "you owe $".$threeHours->price/100;
-            return view('payment', compact('paymentMessage'));
+            return view('payment', compact('paymentMessage', 'ticketId'));
         }else if($ticketDuration <= $sixHours->duration){
             $paymentMessage = "you owe $".$sixHours->price/100;
-            return view('payment', compact('paymentMessage')); 
+            return view('payment', compact('paymentMessage', 'ticketId')); 
         }else if ($ticketDuration > $sixHours->duration){
             $paymentMessage = "you owe $".$allDay->price/100;
-            return view('payment', compact('paymentMessage'));
+            return view('payment', compact('paymentMessage', 'ticketId'));
         }
     }
 
@@ -122,7 +122,8 @@ class ParkingController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        
     }
 
     /**
@@ -134,7 +135,27 @@ class ParkingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //change "has_paid" to true and take away one from the garage's 'occupied_spaces'
+        //change "has_paid" to true and minus one from the garage's 'occupied_spaces'
+        // $ticketId = $id;
+        // $ticketRow = Ticket::whereId($ticketId)->first();
+        $ticket = Ticket::find($id);
+        if ($ticket) {
+            $ticket->has_paid = true;
+            $ticket->save();
+            if($ticket->has_paid = true) {
+                $garageRow = Garage::find($ticket->garage_id)->first();
+                $spacesMinusOne = $garageRow->occupied_spaces-1;
+                // dd($spacesMinusOne);
+                $garageRow->occupied_spaces = $spacesMinusOne;
+                $garageRow->save();
+                return view('thankYou');
+                
+            }
+        }
+
+        // dd($id, $request);
+
+        
     }
 
     /**
