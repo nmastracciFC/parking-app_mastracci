@@ -1,11 +1,14 @@
 <template>
     <div class="container">
      <div>
-        <h1>All The Garages</h1>
+        <h1>Choose a Garage</h1>
         <div v-for="garage in garages" :key="garage.id"  >
             <h2>{{garage.garage_name}}</h2>
             <h3>There are {{garage.space_remaining}} spots remaining</h3>
             <input type="button" :garageId="garage.id" :name="garage.garage_name" value="PARK HERE">
+            
+            
+            
 
         </div>
        	
