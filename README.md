@@ -20,13 +20,15 @@ There are two versions of this app. The first (master branch) is built using Vue
 
 1 Clone the repo and run `npm install` 
 
-2 Which branch you would like to view first?
+2 Let's migrate and seed all at once! `php artisan migrate --seed`
+
+4 Which branch you would like to view first?
 	- `git checkout master`
 	- `git checkout dev.nam.php`
 
-3 Next run `npm watch` to compile the assets into the public folder
+5 Next run `npm watch` to compile the assets into the public folder
 
-4 Serve up the project with `php artisan serve` and enjoy on your localhost
+6 Serve up the project with `php artisan serve` and enjoy on your localhost
 
 
 
