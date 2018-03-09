@@ -3,7 +3,7 @@
      <div>
         <h1>Choose a Garage</h1>
         <div v-for="garage in garages" :key="garage.id"  >
-            <input type="button" v-bind:ref="garage.id" :name="garage.id" value="PARK HERE" v-on:click="getTicket">
+            <input type="button" v-bind:ref="garage.id" :name="garage.space_remaining" :id="garage.id" value="PARK HERE" v-on:click="getTicket">
             <h2>{{garage.garage_name}}</h2>
             <h3>There are {{garage.space_remaining}} spots remaining</h3>
           
@@ -22,7 +22,7 @@
             return {
                 garages: [],
                 user: [],
-                ticket: [],
+                ticketInfo: [],
                 loading:true
 
             }
@@ -44,12 +44,24 @@
         },
         methods: {
             getTicket: function(garage) {
-                console.log(garage.path[0].name);
-                // axios.get('/api/users')
-                //     .then((response) =>{
-                //         this.user = response.data;
-                //         console.log(response.data);
-                //     })
+                var spaceRemaining = garage.path[0].name;
+                var garageId = garage.path[0].id;
+
+                if(spaceRemaining > 0) {
+                    console.log("you can have a ticket!");
+                    var ticketInfo = [garageId, spaceRemaining ];
+
+                    Event.$emit('ticketGiven');
+
+                    // axios.post('/garages/ticket')
+                    //     .then((response) =>{
+                    //     this.user = response.data;
+                    //     console.log(response.data);
+                    // })
+                } else {
+                    alert("There is no room, Please Choose a different garage");
+                }
+                // 
             }
         }
     }

@@ -2,6 +2,8 @@
     <div class="container">
         
     <h1>Here is your ticket!</h1>
+    <h3 v-model="garages" >You are parked in {{garages.garage_name}}</h3>
+
 
 
 
@@ -14,17 +16,19 @@
     import axios from 'axios';
     export default {
         name:'garages',
-        props: [],
+        // props: ['garages'],
         data() {
             return {
                 user: [],
                 ticket:[],
-                loading:true
+                loading:true,
+                garages: [],
 
             }
         },
 
-        mounted() {
+        created() {
+        	Event.$on('ticketGiven', () => alert("Here is your ticket"));
             
 
             var vm = this;

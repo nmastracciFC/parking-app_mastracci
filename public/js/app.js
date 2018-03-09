@@ -27521,6 +27521,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -27544,7 +27548,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Welcome to Spot")])
+      _c("h1", [_vm._v("Welcome to Spot")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("The Only Parking Garage App")]),
+      _vm._v(" "),
+      _c("h4", [
+        _vm._v("Let's get started by clicking garages on the menu tab")
+      ])
     ])
   }
 ]
@@ -27591,7 +27601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             garages: [],
             user: [],
-            ticket: [],
+            ticketInfo: [],
             loading: true
 
         };
@@ -27611,12 +27621,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getTicket: function getTicket(garage) {
-            console.log(garage.path[0].name);
-            // axios.get('/api/users')
-            //     .then((response) =>{
-            //         this.user = response.data;
-            //         console.log(response.data);
-            //     })
+            var spaceRemaining = garage.path[0].name;
+            var garageId = garage.path[0].id;
+
+            if (spaceRemaining > 0) {
+                console.log("you can have a ticket!");
+                var ticketInfo = [garageId, spaceRemaining];
+
+                Event.$emit('ticketGiven');
+
+                // axios.post('/garages/ticket')
+                //     .then((response) =>{
+                //     this.user = response.data;
+                //     console.log(response.data);
+                // })
+            } else {
+                alert("There is no room, Please Choose a different garage");
+            }
+            // 
         }
     }
 });
@@ -27662,6 +27684,7 @@ window.axios = __webpack_require__(10);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.Event = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -50234,7 +50257,12 @@ var render = function() {
             _c("input", {
               ref: garage.id,
               refInFor: true,
-              attrs: { type: "button", name: garage.id, value: "PARK HERE" },
+              attrs: {
+                type: "button",
+                name: garage.space_remaining,
+                id: garage.id,
+                value: "PARK HERE"
+              },
               on: { click: _vm.getTicket }
             }),
             _vm._v(" "),
@@ -50336,20 +50364,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'garages',
-    props: [],
+    // props: ['garages'],
     data: function data() {
         return {
             user: [],
             ticket: [],
-            loading: true
+            loading: true,
+            garages: []
 
         };
     },
-    mounted: function mounted() {
+    created: function created() {
+        Event.$on('ticketGiven', function () {
+            return alert("Here is your ticket");
+        });
 
         var vm = this;
         // console.log(vm);
@@ -50461,18 +50495,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Here is your ticket!")]),
+    _vm._v(" "),
+    _c(
+      "h3",
+      {
+        model: {
+          value: _vm.garages,
+          callback: function($$v) {
+            _vm.garages = $$v
+          },
+          expression: "garages"
+        }
+      },
+      [_vm._v("You are parked in " + _vm._s(_vm.garages.garage_name))]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Here is your ticket!")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
