@@ -15,9 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/Home.vue'));
+Vue.component('home', require('./components/Home.vue'));
 Vue.component('ticket', require('./components/Ticket.vue'));
-Vue.component('about', require('./components/Garages.vue'));
+Vue.component('garages', require('./components/Garages.vue'));
+Vue.component('thank-you', require('./components/ThankYou.vue'));
 
 
 

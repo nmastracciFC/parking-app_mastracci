@@ -1,9 +1,9 @@
-<template>
+<template >
     <div class="container garages">
      <div>
-        <h1>Choose a Garage</h1>
+        <h1>Choose a Garage</h1><h1>{{user.fname}}</h1>
         <div v-for="garage in garages" :key="garage.id"  >
-            <input type="button" v-bind:ref="garage.id" :name="garage.space_remaining" :id="garage.id" value="PARK HERE" v-on:click="getTicket">
+            <router-link to="/garages/ticket"><input type="button" v-bind:ref="garage.id" :name="garage.space_remaining" :id="garage.id" value="PARK HERE" v-on:click="getTicket"></router-link>
             <h2>{{garage.garage_name}}</h2>
             <h3>There are {{garage.space_remaining}} spots remaining</h3>
           
@@ -17,7 +17,6 @@
     import axios from 'axios';
     export default {
         name:'garages',
-        props: [],
         data() {
             return {
                 garages: [],
@@ -46,6 +45,8 @@
             getTicket: function(garage) {
                 var spaceRemaining = garage.path[0].name;
                 var garageId = garage.path[0].id;
+                var ticketInfo = [];
+                console.log(user);
 
                 if(spaceRemaining > 0) {
                     console.log("you can have a ticket!");
@@ -53,11 +54,16 @@
 
                     Event.$emit('ticketGiven');
 
-                    // axios.post('/garages/ticket')
-                    //     .then((response) =>{
-                    //     this.user = response.data;
-                    //     console.log(response.data);
-                    // })
+                    axios.post('/garages/ticket')
+                        .then((response) =>{
+                        this.user = response.data;
+                        console.log(response.data);
+                    });
+                    axios.get('/api/user')
+                        .then((response)=> {
+                            console.log(response);
+                        })
+
                 } else {
                     alert("There is no room, Please Choose a different garage");
                 }

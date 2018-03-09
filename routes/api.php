@@ -23,3 +23,5 @@ Route::get('/garages/{id}', 'GarageController@show');
 
 Route::get('/users', 'UserController@index');
 Route::get('/users/{id}', 'UserController@show');
+
+Route::get('/ticket/{id}', 'TicketController@index');

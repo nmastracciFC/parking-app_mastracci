@@ -8,16 +8,21 @@ let routes = [
 
 {
 	path:'/garages',
-	component:require('./components/Garages')
+	component:require('./components/Garages.vue')
 },
 {
 	path:'/garages/ticket',
-	component:require('./components/Ticket')
+	component:require('./components/Ticket.vue')
+},
+{
+	path:'/garages/ticket/thankyou',
+	component:require('./components/ThankYou.vue')
 }
 
 
 ];
 
 export default new VueRouter({
-	routes
+	routes,
+	props:['user']
 });

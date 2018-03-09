@@ -27828,9 +27828,10 @@ window.Vue = __webpack_require__(17);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(6));
+Vue.component('home', __webpack_require__(6));
 Vue.component('ticket', __webpack_require__(16));
-Vue.component('about', __webpack_require__(7));
+Vue.component('garages', __webpack_require__(7));
+Vue.component('thank-you', __webpack_require__(62));
 
 var app = new Vue({
   el: '#app',
@@ -27854,10 +27855,14 @@ var routes = [{
 }, {
 	path: '/garages/ticket',
 	component: __webpack_require__(16)
+}, {
+	path: '/garages/ticket/thankyou',
+	component: __webpack_require__(62)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-	routes: routes
+	routes: routes,
+	props: ['user']
 }));
 
 /***/ }),
@@ -28021,7 +28026,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'garages',
-    props: [],
     data: function data() {
         return {
             garages: [],
@@ -28046,8 +28050,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getTicket: function getTicket(garage) {
+            var _this = this;
+
             var spaceRemaining = garage.path[0].name;
             var garageId = garage.path[0].id;
+            var ticketInfo = [];
+            console.log(user);
 
             if (spaceRemaining > 0) {
                 console.log("you can have a ticket!");
@@ -28055,11 +28063,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 Event.$emit('ticketGiven');
 
-                // axios.post('/garages/ticket')
-                //     .then((response) =>{
-                //     this.user = response.data;
-                //     console.log(response.data);
-                // })
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/garages/ticket').then(function (response) {
+                    _this.user = response.data;
+                    console.log(response.data);
+                });
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/user').then(function (response) {
+                    console.log(response);
+                });
             } else {
                 alert("There is no room, Please Choose a different garage");
             }
@@ -28963,31 +28973,39 @@ var render = function() {
       "div",
       [
         _c("h1", [_vm._v("Choose a Garage")]),
+        _c("h1", [_vm._v(_vm._s(_vm.user.fname))]),
         _vm._v(" "),
         _vm._l(_vm.garages, function(garage) {
-          return _c("div", { key: garage.id }, [
-            _c("input", {
-              ref: garage.id,
-              refInFor: true,
-              attrs: {
-                type: "button",
-                name: garage.space_remaining,
-                id: garage.id,
-                value: "PARK HERE"
-              },
-              on: { click: _vm.getTicket }
-            }),
-            _vm._v(" "),
-            _c("h2", [_vm._v(_vm._s(garage.garage_name))]),
-            _vm._v(" "),
-            _c("h3", [
-              _vm._v(
-                "There are " +
-                  _vm._s(garage.space_remaining) +
-                  " spots remaining"
-              )
-            ])
-          ])
+          return _c(
+            "div",
+            { key: garage.id },
+            [
+              _c("router-link", { attrs: { to: "/garages/ticket" } }, [
+                _c("input", {
+                  ref: garage.id,
+                  refInFor: true,
+                  attrs: {
+                    type: "button",
+                    name: garage.space_remaining,
+                    id: garage.id,
+                    value: "PARK HERE"
+                  },
+                  on: { click: _vm.getTicket }
+                })
+              ]),
+              _vm._v(" "),
+              _c("h2", [_vm._v(_vm._s(garage.garage_name))]),
+              _vm._v(" "),
+              _c("h3", [
+                _vm._v(
+                  "There are " +
+                    _vm._s(garage.space_remaining) +
+                    " spots remaining"
+                )
+              ])
+            ],
+            1
+          )
         })
       ],
       2
@@ -29066,6 +29084,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -29088,18 +29107,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var vm = this;
         // console.log(vm);
         // console.log('Component mounted.')
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/garages').then(function (response) {
-            // console.log(response.data);
-            vm.garages = response.data;
-        }, function (error) {
-            console.log(error);
-        });
     },
 
     methods: {
         getTicket: function getTicket() {
-            // console.log(this.$refs);
-
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/garages').then(function (response) {
+                // console.log(response.data);
+                vm.garages = response.data;
+            }, function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -29112,23 +29129,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h1", [_vm._v("Here is your ticket!")]),
-    _vm._v(" "),
-    _c(
-      "h3",
-      {
-        model: {
-          value: _vm.garages,
-          callback: function($$v) {
-            _vm.garages = $$v
-          },
-          expression: "garages"
-        }
-      },
-      [_vm._v("You are parked in " + _vm._s(_vm.garages.garage_name))]
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h1", [_vm._v("Here is your ticket!")]),
+      _vm._v(" "),
+      _c(
+        "h3",
+        {
+          model: {
+            value: _vm.garages,
+            callback: function($$v) {
+              _vm.garages = $$v
+            },
+            expression: "garages"
+          }
+        },
+        [_vm._v("You are parked in " + _vm._s(_vm.ticket.garage_name))]
+      ),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/garages/ticket/thankyou" } }, [
+        _c("input", {
+          attrs: { type: "button", value: "EXIT NOW" },
+          on: { click: _vm.getTicket }
+        })
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50510,6 +50539,116 @@ Object.defineProperty(exports, '__esModule', { value: true });
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ThankYou.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2b004da2", Component.options)
+  } else {
+    hotAPI.reload("data-v-2b004da2", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("Thank you for parking with SPOT")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("We hope you'll come back soon.")]),
+      _vm._v(" "),
+      _c("h4", [_vm._v("Drive Safe!")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2b004da2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function tickets() {
-        return $this->hasMany(Ticket::class , 'id', 'user_id');
+        return $this->hasMany(Ticket::class , 'user_id', 'id' );
     }
     public function cars() {
         return $this->hasMany(Car::class, 'id', 'user_id');

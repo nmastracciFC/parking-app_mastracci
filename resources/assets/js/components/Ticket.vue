@@ -2,7 +2,8 @@
     <div class="container">
         
     <h1>Here is your ticket!</h1>
-    <h3 v-model="garages" >You are parked in {{garages.garage_name}}</h3>
+    <h3 v-model="garages" >You are parked in {{ticket.garage_name}}</h3>
+    <router-link to="/garages/ticket/thankyou"><input type="button"   value="EXIT NOW" v-on:click="getTicket"></router-link>
 
 
 
@@ -34,17 +35,17 @@
             var vm = this;
             // console.log(vm);
             // console.log('Component mounted.')
-            axios.get('/api/garages')
+            
+        },
+        methods: {
+            getTicket: function() {
+                axios.get('/api/garages')
                     .then((response) =>{
                         // console.log(response.data);
                         vm.garages = response.data
                     }, (error) => {
                         console.log(error);
                     });
-        },
-        methods: {
-            getTicket: function() {
-                // console.log(this.$refs);
                 
             }
         }

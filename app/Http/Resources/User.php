@@ -19,8 +19,10 @@ class User extends JsonResource
             'fname' => $this->fname,
             'lname' => $this->lname,
             'email' => $this->email,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at 
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at, 
+            'tickets' => $this->tickets,
+            'cars'=>$this->cars
 
         ];
     }
