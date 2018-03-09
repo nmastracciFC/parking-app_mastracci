@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('lname');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('license_plate')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->string('payment_number')->nullable();
+            $table->string('payment_expiry')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

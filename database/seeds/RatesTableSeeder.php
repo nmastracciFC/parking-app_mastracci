@@ -13,8 +13,6 @@ class RatesTableSeeder extends Seeder
     public function run()
     {
         Eloquent::unguard();
-
-       // $faker = Faker\Factory::create();
   
        	Rate::create([
             'duration' => 3600,
