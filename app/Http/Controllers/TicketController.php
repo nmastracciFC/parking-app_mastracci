@@ -35,7 +35,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::user()->employees->id;
     }
 
     /**

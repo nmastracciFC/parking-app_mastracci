@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <img src="images/logo_spot-circle.svg" alt="SPOT Parking Logo">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +63,8 @@
         <main class="vue-nav" >
             <router-link to="/" exact>HOME</router-link>
             <router-link to="/garages">GARAGES</router-link>
-            <router-view></router-view>
-            @yield('content')
+            <router-view ></router-view>
+            
         </main>
     </div>
 

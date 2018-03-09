@@ -17,15 +17,20 @@
     import axios from 'axios';
     export default {
         name:'garages',
+        props: [],
         data() {
             return {
                 garages: [],
+                user: [],
+                ticket: [],
                 loading:true
 
             }
         },
 
         mounted() {
+            
+
             var vm = this;
             // console.log(vm);
             // console.log('Component mounted.')
@@ -38,8 +43,13 @@
                     });
         },
         methods: {
-            getTicket: function() {
-                console.log(this.$refs.input);
+            getTicket: function(garage) {
+                console.log(garage.path[0].name);
+                // axios.get('/api/users')
+                //     .then((response) =>{
+                //         this.user = response.data;
+                //         console.log(response.data);
+                //     })
             }
         }
     }

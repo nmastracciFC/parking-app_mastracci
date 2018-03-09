@@ -40,8 +40,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        UserResource::withoutWrapping();
-        return new UserResource(User::find($id));
+        UserCollection::withoutWrapping();
+        return new UserCollection(User::find($id));
         // $oneUser = User::Find($id);
 
         // return new UserResource($oneUser);
