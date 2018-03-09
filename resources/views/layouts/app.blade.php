@@ -61,9 +61,7 @@
         </nav>
 
         <main class="vue-nav" >
-            <router-link to="/" exact>HOME</router-link>
-            <router-link to="/garages">GARAGES</router-link>
-            <router-view ></router-view>
+            
             @yield('content')
         </main>
     </div>
