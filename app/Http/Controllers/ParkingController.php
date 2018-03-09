@@ -47,21 +47,27 @@ class ParkingController extends Controller
 
         $userId = Auth::user()->id;
         $garageId = request('garage_id');
-        // dd($garageId);
+        $garageRow = Garage::whereId($garageId)->first();
+        $garageAvailable = $garageRow->total_spaces - $garageRow->occupied_spaces;
+        // dd($garageId, $garageAvailable);
        
+        if($garageAvailable > 0) {
+             $userTicket = Ticket::create([
+                'user_id' => $userId,
+                'garage_id' => $garageId,
+                'has_paid' => false
+                ]);
+            $userTicket->save();
+            $incrementGarage = DB::table('garages')->whereId($garageId)->increment('occupied_spaces');
+        }
 
-        $userTicket = Ticket::create([
-            'user_id' => $userId,
-            'garage_id' => $garageId,
-            'has_paid' => false
+        $newTicketId = $userTicket->id;
+        $newTicketRow = Ticket::whereId($newTicketId)->first();
 
-        ]);
-
-        // $incrementGarage = Garage::where('id', $garageId)->upodate(array('occupied_spaces' =>))
-        $incrementGarage = DB::table('garages')->whereId($garageId)->increment('occupied_spaces');
-        $userTicket->save();
+        // dd($newTicketRow);
+       
         // dd($userTicket, $incrementGarage);
-        return view('success', compact('schedules'));
+        return view('newTicket', compact('newTicketRow'));
     }
 
     /**
@@ -70,9 +76,12 @@ class ParkingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request $id)
     {
+        $userId = Auth::user()->id;
+        // $ticketEntryTime = Ticket::
         //When a user leaves subtract their ticket's 'created_at' time from current time ask for their payment information. On payment update 'has_paid' on ticket to true and allow the user to leave
+
     }
 
     /**

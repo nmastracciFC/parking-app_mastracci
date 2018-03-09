@@ -23,5 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/garages','ParkingController@index');
 Route::post('/garages/park','ParkingController@store');
-Route::get('/garage/ticket', 'ParkingController@show');
+Route::post('/garage/park/payment', 'ParkingController@show');
 
