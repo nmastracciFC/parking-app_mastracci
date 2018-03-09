@@ -24,29 +24,34 @@ body {
 }
 nav {
 	display: inline-block;
-	// vertical-align:center;
-	// margin-left:1em;
-	// text-decoration:none;
-	// color:$grey;
-	
 	ul{
 		list-style:none;
-		
-
 	}
 	li {
-		
 		display: inline-block;
 		margin-right: 1em;
-
 	}
 	a {
 		color:$grey;
 		font-size:1.6em;
-
-		
+	}
+	
+}
+.vue-nav {
+	a {
+		color: $green;
+		font-size:2em;
+		margin-top:1em;
+		padding:1em 2em;
+		transition: all 0.5s ease;
+		text-decoration: none;
+		&:hover {
+			font-size:2.1em;
 		}
-		
+	}
+}
 
+.router-link-exact-active {
+	// border-left: 0.2em solid $grey;
 	
 }

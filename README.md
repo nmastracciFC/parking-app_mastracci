@@ -8,5 +8,9 @@ Would you like me to find you a parking SPOT? SPOT is a mySQL/Laravel/Vue based 
 * Laravel
 * Vue.js
 
+## Seeded Database
+
+The database makes use of laravel seeder to populate all the fields with dummy data for you to better visualize how a user might navigate through the experience. A mysql file has also been provided for you, should you wish to see the database structure that way.
+
 
 

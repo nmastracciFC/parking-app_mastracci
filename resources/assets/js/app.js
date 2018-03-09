@@ -16,7 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/Home.vue'));
-Vue.component('about', require('./components/About.vue'));
+Vue.component('ticket', require('./components/Ticket.vue'));
 Vue.component('about', require('./components/Garages.vue'));
 
 

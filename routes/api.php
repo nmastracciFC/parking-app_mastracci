@@ -17,5 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/rate/{id}', 'RateController@show');
-Route::get('/garage/{id}', 'GarageController@show');
+Route::get('/rates/{id}', 'RateController@show');
+Route::get('/garages', 'GarageController@index');
+Route::get('/garages/{id}', 'GarageController@show');
+
+Route::get('/users', 'UserController@index');
+Route::get('/users/{id}', 'UserController@show');

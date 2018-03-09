@@ -20,10 +20,20 @@ class Garage extends JsonResource
                 'garage_name' => $this->garage_name,
                 'total_spaces' => $this->total_spaces,
                 'occupied_spaces' => $this->occupied_spaces,
+                'space_remaining' => $this->total_spaces-$this->occupied_spaces,
                 'entrance' => $this->entrance,
                 'exit' => $this->exit,
-                'created_at' => $this->created_at,
+                // 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at 
             ];
     }
+
+    public function with($request) {
+        return [
+            'valid_as_of' => date('D, d M Y H:i:s')
+
+        ];
+    }
+
+
 }

@@ -1,34 +1,34 @@
 <template>
-    <div class="container garages">
-     <div>
-        <h1>Choose a Garage</h1>
-        <div v-for="garage in garages" :key="garage.id"  >
-            <input type="button" v-bind:ref="garage.id" :name="garage.space_remaining" :id="garage.id" value="PARK HERE" v-on:click="getTicket">
-            <h2>{{garage.garage_name}}</h2>
-            <h3>There are {{garage.space_remaining}} spots remaining</h3>
-          
-        </div>
-       	
-     </div>
+    <div class="container">
+        
+    <h1>Here is your ticket!</h1>
+    <h3 v-model="garages" >You are parked in {{garages.garage_name}}</h3>
+
+
+
+
     </div>
+                 
 </template>
+
 
 <script>
     import axios from 'axios';
     export default {
         name:'garages',
-        props: [],
+        // props: ['garages'],
         data() {
             return {
-                garages: [],
                 user: [],
-                ticketInfo: [],
-                loading:true
+                ticket:[],
+                loading:true,
+                garages: [],
 
             }
         },
 
-        mounted() {
+        created() {
+        	Event.$on('ticketGiven', () => alert("Here is your ticket"));
             
 
             var vm = this;
@@ -43,25 +43,9 @@
                     });
         },
         methods: {
-            getTicket: function(garage) {
-                var spaceRemaining = garage.path[0].name;
-                var garageId = garage.path[0].id;
-
-                if(spaceRemaining > 0) {
-                    console.log("you can have a ticket!");
-                    var ticketInfo = [garageId, spaceRemaining ];
-
-                    Event.$emit('ticketGiven');
-
-                    // axios.post('/garages/ticket')
-                    //     .then((response) =>{
-                    //     this.user = response.data;
-                    //     console.log(response.data);
-                    // })
-                } else {
-                    alert("There is no room, Please Choose a different garage");
-                }
-                // 
+            getTicket: function() {
+                // console.log(this.$refs);
+                
             }
         }
     }

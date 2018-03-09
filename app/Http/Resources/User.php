@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Rate extends JsonResource
+class User extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,12 +14,14 @@ class Rate extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
-                'id' => $this->id,
-                'duration' => $this->duration,
-                'price' => $this->price,
-    
-            ];
+            'id' => $this->id,
+            'fname' => $this->fname,
+            'lname' => $this->lname,
+            'email' => $this->email,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at 
+
+        ];
     }
 }

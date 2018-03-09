@@ -10027,3 +10027,17 @@ nav a {
   font-size: 1.6em;
 }
 
+.vue-nav a {
+  color: #8ccc42;
+  font-size: 2em;
+  margin-top: 1em;
+  padding: 1em 2em;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+
+.vue-nav a:hover {
+  font-size: 2.1em;
+}
+

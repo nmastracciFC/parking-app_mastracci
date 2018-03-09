@@ -22,7 +22,9 @@ class UsersTableSeeder extends Seeder
             'lname' => $faker->lastName,
             'email' => $faker->email,
             'password' => Hash::make('password'),
-            'license_plate' => 'BDLS'.$index.'00'
+            'payment_type' => Hash::make('Visa'),
+            'payment_number' => Hash::make('1234567890123456'),
+            'payment_expiry' => Hash::make('10/21')
    
        	]);
        }
