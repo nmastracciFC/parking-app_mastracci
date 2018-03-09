@@ -10030,6 +10030,7 @@ nav a {
 .vue-nav a {
   color: #8ccc42;
   font-size: 2em;
+  margin-top: 1em;
   padding: 1em 2em;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;

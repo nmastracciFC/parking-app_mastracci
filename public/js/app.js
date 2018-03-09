@@ -3299,7 +3299,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(56)
+  __webpack_require__(64)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
@@ -27503,7 +27503,6 @@ var routes = [{
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-
 	routes: routes
 }));
 
@@ -27583,9 +27582,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -27599,14 +27595,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var vm = this;
-        console.log(vm);
-        console.log('Component mounted.');
+        // console.log(vm);
+        // console.log('Component mounted.')
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/garages').then(function (response) {
-            console.log(response.data);
+            // console.log(response.data);
             vm.garages = response.data;
         }, function (error) {
             console.log(error);
         });
+    },
+
+    methods: {
+        getTicket: function getTicket() {
+            console.log(this.$refs.input);
+        }
     }
 });
 
@@ -49949,46 +49951,8 @@ function toComment(sourceMap) {
 /***/ }),
 /* 54 */,
 /* 55 */,
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(57);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(58)("796d0832", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62d79b7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Garages.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62d79b7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Garages.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(53)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.grey-out[data-v-62d79b7c] {\n    color:#a9aab4;\n    background-color: #a9aab4;\n}\n\n    \n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 56 */,
+/* 57 */,
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -50250,7 +50214,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container garages" }, [
     _c(
       "div",
       [
@@ -50258,6 +50222,13 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.garages, function(garage) {
           return _c("div", { key: garage.id }, [
+            _c("input", {
+              ref: garage.id,
+              refInFor: true,
+              attrs: { type: "button", name: garage.id, value: "PARK HERE" },
+              on: { click: _vm.getTicket }
+            }),
+            _vm._v(" "),
             _c("h2", [_vm._v(_vm._s(garage.garage_name))]),
             _vm._v(" "),
             _c("h3", [
@@ -50266,16 +50237,7 @@ var render = function() {
                   _vm._s(garage.space_remaining) +
                   " spots remaining"
               )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "button",
-                garageId: garage.id,
-                name: garage.garage_name,
-                value: "PARK HERE"
-              }
-            })
+            ])
           ])
         })
       ],
@@ -50390,6 +50352,46 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-41543734", module.exports)
   }
 }
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(65);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(58)("75685c38", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62d79b7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Garages.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62d79b7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Garages.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(53)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.grey-out[data-v-62d79b7c] {\n  color: #a9aab4;\n  background-color: #a9aab4;\n}\n.garages h1[data-v-62d79b7c] {\n  padding-top: 1em;\n}\n.garages h2[data-v-62d79b7c] {\n  padding-top: 2em;\n  display: inline-block;\n  padding-right: 1em;\n}\n.garages h3[data-v-62d79b7c] {\n  padding-top: 2em;\n  display: inline-block;\n  padding-right: 1em;\n}\n.garages input[data-v-62d79b7c] {\n  margin-right: 1em;\n  padding: 1.6em 1em;\n  display: inline-block;\n  border-radius: 30em;\n  border: 0.2em solid #8ccc42;\n  tansition: all 0.5s ease;\n  font-size: 1.4em;\n}\n.garages input[data-v-62d79b7c]:hover {\n    background-color: #8ccc42;\n    color: #fff;\n}\n.garages input[data-v-62d79b7c]:selected {\n    background-color: #8ccc42;\n    color: #fff;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
