@@ -8,6 +8,9 @@ use App\User;
 use App\Car;
 use App\Ticket;
 use App\Rate;
+use Auth;
+use Carbon;
+use DB;
 
 class ParkingController extends Controller
 {
@@ -40,17 +43,24 @@ class ParkingController extends Controller
      */
     public function store(Request $request)
     {
+    //when a user enters the garage save their user_id, garage_id, set 'has_paid' to false and then increment the garage's available spaces by one
+
         $userId = Auth::user()->id;
-        dd($userId);
-        die;
+        $garageId = request('garage_id');
+        // dd($garageId);
+       
 
         $userTicket = Ticket::create([
             'user_id' => $userId,
-            'garage_id' => request('garage_id'),
+            'garage_id' => $garageId,
             'has_paid' => false
 
         ]);
+
+        // $incrementGarage = Garage::where('id', $garageId)->upodate(array('occupied_spaces' =>))
+        $incrementGarage = DB::table('garages')->whereId($garageId)->increment('occupied_spaces');
         $userTicket->save();
+        // dd($userTicket, $incrementGarage);
         return view('success', compact('schedules'));
     }
 
@@ -62,7 +72,7 @@ class ParkingController extends Controller
      */
     public function show($id)
     {
-        //
+        //When a user leaves subtract their ticket's 'created_at' time from current time ask for their payment information. On payment update 'has_paid' on ticket to true and allow the user to leave
     }
 
     /**
@@ -85,7 +95,7 @@ class ParkingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //When a user leaves subtract their ticket's 'created_at' time from current time ask for their payment information, 
     }
 
     /**

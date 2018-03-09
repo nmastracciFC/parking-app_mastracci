@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/garages/all', 'GarageController@index');
+// Route::get('/garages/all', 'GarageController@index');
 
-Route::get('/php/garages','ParkingController@index');
-Route::post('/php/garages','ParkingController@store');
-Route::get('php/garage/ticket', 'ParkingController@show');
+Route::get('/garages','ParkingController@index');
+Route::post('/garages/park','ParkingController@store');
+Route::get('/garage/ticket', 'ParkingController@show');
 

@@ -10,7 +10,7 @@
         <h4>You did it, {{ Auth::user()->fname }}. You Now have a ticket.</h4>
         <h4>please enter the garage</h4>
         <ul>
-            <li><a href="/php/garages">View Garages</a></li>
+            <li><a href="/garages">View Garages</a></li>
         </ul>
         </div>
             

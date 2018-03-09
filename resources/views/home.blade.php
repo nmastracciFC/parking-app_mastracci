@@ -10,7 +10,7 @@
         <h4>{{ Auth::user()->fname }} You are logged in!</h4>
         <h4>What Would You Like to Do?</h4>
         <ul>
-            <li><a href="/php/garages">View Garages</a></li>
+            <li><a href="/garages">View Garages</a></li>
         </ul>
         </div>
             
