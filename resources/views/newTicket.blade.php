@@ -11,17 +11,15 @@
         <h4>Please enter the garage</h4>
 
         <div>
-            <form action="/garages/park/payment" method="post" >
-                <input type="hidden" name="_method" value="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          
+                
                 <h4>Entry Time: {{$newTicketRow->created_at}}</h4>
-                <button type="submit" name="ticket_id" value="{{$newTicketRow->id}}">PAY TICKET AND EXIT</button>
-            </form>
+                <a href="/garages/park/{{$newTicketRow->id}}">LEAVE GARAGE</a>
+                
+           
         </div>
 
-        <ul>
-            <li><a href="/garages">View Garages</a></li>
-        </ul>
+    
         </div>
             
      

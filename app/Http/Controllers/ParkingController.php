@@ -59,15 +59,18 @@ class ParkingController extends Controller
                 ]);
             $userTicket->save();
             $incrementGarage = DB::table('garages')->whereId($garageId)->increment('occupied_spaces');
+            $newTicketId = $userTicket->id;
+            $newTicketRow = Ticket::whereId($newTicketId)->first();
+
+                 // dd($newTicketRow);
+       
+                // dd($userTicket, $incrementGarage);
+        return view('newTicket', compact('newTicketRow'));
+        } else {
+            return view('lotFull');
         }
 
-        $newTicketId = $userTicket->id;
-        $newTicketRow = Ticket::whereId($newTicketId)->first();
-
-        // dd($newTicketRow);
        
-        // dd($userTicket, $incrementGarage);
-        return view('newTicket', compact('newTicketRow'));
     }
 
     /**
@@ -76,9 +79,40 @@ class ParkingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request $id)
+    public function show($id)
     {
+        // dd($id);
+        // return "working";
         $userId = Auth::user()->id;
+        $ticketId = $id;
+        $ticketRow = Ticket::whereId($ticketId)->first();
+        $ticketCreated = $ticketRow->created_at->timestamp;
+
+        $currentTime = Carbon\Carbon::now()->timestamp;
+        $ticketDuration = $currentTime - $ticketCreated;
+        // dd($ticketDuration);
+
+        $oneHour = Rate::find(1);
+        $threeHours = Rate::find(2);
+        $sixHours = Rate::find(3);
+        $allDay = Rate::find(4);
+        // dd($oneHour, $threeHours, $sixHours, $allDay);
+
+        if($ticketDuration <= $oneHour->duration){
+            $paymentMessage = "you pay $".$oneHour->price/100;
+            return view('payment', compact('paymentMessage'));
+        }else if($ticketDuration <= $threeHours->duration){
+            $paymentMessage = "you pay $".$threeHours->price/100;
+            return view('payment', compact('paymentMessage'));
+        }else if($ticketDuration <= $sixHours->duration){
+            $paymentMessage = "you pay $".$sixHours->price/100;
+            return view('payment', compact('paymentMessage')); 
+        }else if ($ticketDuration > $sixHours->duration){
+            $paymentMessage = "you pay $".$allDay->price/100;
+            return view('payment', compact('paymentMessage'));
+        }
+
+
         // $ticketEntryTime = Ticket::
         //When a user leaves subtract their ticket's 'created_at' time from current time ask for their payment information. On payment update 'has_paid' on ticket to true and allow the user to leave
 

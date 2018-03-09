@@ -14,7 +14,8 @@
         @foreach($garages as $garage)
         <div>
             <h3>{{$garage->garage_name}}</h3>
-            <h4>{{$garage->total_spaces - $garage->occupied_space}}</h4>
+
+            <h4>{{$garage->total_spaces - $garage->occupied_spaces}}</h4>
             <button type="submit" name="garage_id" value="{{$garage->id}}">PARK HERE</button>
         </div>
         @endforeach
