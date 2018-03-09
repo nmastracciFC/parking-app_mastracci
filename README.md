@@ -28,7 +28,7 @@ There are two versions of this app. The first (master branch) is built using Vue
 
 5 Next run `npm watch` to compile the assets into the public folder
 
-6 Serve up the project with `php artisan serve` and enjoy on your localhost
+6 Serve up the project with `php artisan serve` and enjoy on localhost:8000/home
 
 
 
