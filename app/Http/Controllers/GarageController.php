@@ -16,6 +16,7 @@ class GarageController extends Controller
     }
 
     public function index() {
+        GarageResource::withoutWrapping();
     	$garage = Garage::all();
 
     	return new GarageCollection($garage);

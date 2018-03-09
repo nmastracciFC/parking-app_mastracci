@@ -16,7 +16,7 @@ class Garage extends JsonResource
     {
         // return parent::toArray($request);
         return [
-                // 'id' => $this->id,
+                'id' => $this->id,
                 'garage_name' => $this->garage_name,
                 'total_spaces' => $this->total_spaces,
                 'occupied_spaces' => $this->occupied_spaces,

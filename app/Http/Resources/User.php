@@ -16,14 +16,11 @@ class User extends JsonResource
     {
         return [
             'id' => $this->id,
-            'garage_name' => $this->garage_name,
-                'total_spaces' => $this->total_spaces,
-                'occupied_spaces' => $this->occupied_spaces,
-                'space_remaining' => $this->total_spaces-$this->occupied_spaces,
-                'entrance' => $this->entrance,
-                'exit' => $this->exit,
-                // 'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at 
+            'fname' => $this->fname,
+            'lname' => $this->lname,
+            'email' => $this->email,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at 
 
         ];
     }
