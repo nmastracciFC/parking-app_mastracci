@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
 
         <title>SPOT | The Parking Garage App</title>
 
@@ -13,6 +14,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
        
@@ -32,9 +34,10 @@
             </div>
 
             <router-link to="/" exact>HOME</router-link>
-            <router-link to="/about">ABOUT</router-link>
             <router-link to="/garages">GARAGES</router-link>
-            <router-view></router-view>
+            <router-link to="/garages/tickets">CURRENT TICKET</router-link>
+            <router-view ></router-view>
+            @yield('content')
             
                     
                 
