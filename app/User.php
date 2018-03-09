@@ -32,6 +32,6 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class , 'user_id', 'id' );
     }
     public function cars() {
-        return $this->hasMany(Car::class, 'id', 'user_id');
+        return $this->hasMany(Car::class, 'user_id', 'id' );
     }
 }

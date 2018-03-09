@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use Illuminate\Http\Request;
+use App\Http\Resources\Ticket as TicketResource;
 
 class TicketController extends Controller
 {
@@ -44,9 +45,14 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
-        //
+       TicketResource::withoutWrapping();
+
+        // return new GarageResource($garage);
+
+        // return new GarageResource(Garage::all());
+        return new TicketResource(Ticket::find($id));
     }
 
     /**
